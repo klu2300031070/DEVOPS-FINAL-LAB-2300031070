@@ -25,6 +25,7 @@ function App() {
   }, []);
 
   const addCourse = async () => {
+    try{
     await fetch(`${BASE_URL}/add`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -34,6 +35,10 @@ function App() {
     alert("Course Added!");
     setNewCourse({ title: "", faculty: "", credits: "" });
     loadCourses();
+  }catch(error){
+    console.log(error);
+    
+  }
   };
 
   const searchCourse = async () => {
